@@ -15,12 +15,15 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->bigInteger('siswa_id')->nullable()->unsigned()->index();
+            $table->string('username', 20)->nullable();
+            $table->string('password', 20);
+            $table->string('name', 20)->nullable();
+            $table->enum('siswa', ['siswa', 'petugas', 'admin'])->default('siswa');
+            $table->char('nisn', 10)->nullable();
             $table->timestamps();
+
+            $table->foreign('siswa_id')->references('id')->on('siswas');
         });
     }
 
