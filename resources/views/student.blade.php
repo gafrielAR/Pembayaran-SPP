@@ -71,10 +71,6 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
-                        
-                        @if (Auth::user()->role == 'admin')
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
                     @else
                         <a href="{{ route('login') }}">Login</a>
                     @endauth
@@ -82,12 +78,17 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Pembayaran-SPP
-                </div>
-                <form action="{{ route('student') }}" method="GET">
-                    <input class="form-control" type="number" min="" placeholder="NISN" name="nisn">
-                </form>
+                <table class="table table-borderless">
+                        <tr>
+                            <td>{{ $data->nisn }}</td>
+                            <td>{{ $data->nis }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->grade_id }}</td>
+                            <td>{{ $data->address }}</td>
+                            <td>{{ $data->phone }}</td>
+                            <td>{{ $data->spp_id }}</td>
+                        </tr>
+                </table>
             </div>
         </div>
     </body>

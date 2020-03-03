@@ -16,7 +16,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nisn')->unique();
-            $table->string('nis');
+            $table->string('nis')->unique();
             $table->string('name');
             $table->bigInteger('grade_id');
             $table->text('address');

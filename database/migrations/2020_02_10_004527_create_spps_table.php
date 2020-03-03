@@ -15,7 +15,7 @@ class CreateSppsTable extends Migration
     {
         Schema::create('spps', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('year');
+            $table->integer('year')->unique();
             $table->integer('nominal');
             $table->timestamps();
         });
